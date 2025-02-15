@@ -56,7 +56,11 @@ for i, player in pairs(workspace.GameplayParts.Doors.Normal.Paintable:GetDescend
             esp.ZIndex = 0
             esp.Size = Vector3.new(1, 12, 12)
             esp.Transparency = 0.65
-            esp.Color3 = player:FindFirstChild("SurfaceGui"):FindFirstChild("Color").TextColor3
+            local surfaceGui = player:FindFirstChild("SurfaceGui")
+local colorObject = surfaceGui and surfaceGui:FindFirstChild("Color")
+
+esp.Color3 = colorObject and colorObject.TextColor3 or Color3.fromRGB(255, 255, 255)
+
             esp.AlwaysOnTop = true
             esp.Name = "EspBox"
  
